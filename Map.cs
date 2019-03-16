@@ -5,6 +5,10 @@ namespace Kingdom {
   class Check {
     Boolean found;
 
+    public Check() {
+      found = false;
+    }
+
     public Boolean getFound() {
       return found;
     }
@@ -71,7 +75,7 @@ namespace Kingdom {
         c_route.Add(c_pos);
         for(int i = 0; i < map.getHouse(); i++) {
           if((map.getNeighbors(c_pos-1,i) == 1) && (!c_route.Contains(i+1))) {
-            getLevel(i+1,dest,level+1);
+            findLevel(i+1,dest,level+1);
           }
         }
         c_route.Remove(c_pos);
@@ -86,12 +90,12 @@ namespace Kingdom {
       c_route.Add(start);
       for(int i = 0; i < map.getHouse(); i++) {
         if(dir == 0) {
-          if((map.getNeighbors(start-1,i) == 1) && (!c_route.Contains(i+1)) && (map.getLevel(start-1) < map.getLevel(i))) {
+          if((map.getNeighbors(start-1,i) == 1) && (map.getLevel(start-1) > map.getLevel(i))) {
             Trace(dir,i+1,finish,c);
             }
           }
         else if(dir == 1) {
-          if((map.getNeighbors(start-1,i) == 1) && (!c_route.Contains(i+1)) && (map.getLevel(start-1) > map.getLevel(i))) {
+          if((map.getNeighbors(start-1,i) == 1) && (map.getLevel(start-1) < map.getLevel(i))) {
             Trace(dir,i+1,finish,c);
           }
         }
@@ -99,6 +103,7 @@ namespace Kingdom {
           break;
         }
       }
+      c_route.Remove(start);
     }
   }
     
