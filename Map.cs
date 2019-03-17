@@ -82,7 +82,7 @@ namespace Kingdom {
       }
     }
 
-  public void Trace(int dir, int start, int finish, Check c) {
+  public void Trace(int dir, int finish, int start, Check c) {
     if(start == finish) {
       c.setFound(true);
     }
@@ -91,12 +91,12 @@ namespace Kingdom {
       for(int i = 0; i < map.getHouse(); i++) {
         if(dir == 0) {
           if((map.getNeighbors(start-1,i) == 1) && (map.getLevel(start-1) > map.getLevel(i))) {
-            Trace(dir,i+1,finish,c);
+            Trace(dir,finish,i+1,c);
             }
           }
         else if(dir == 1) {
           if((map.getNeighbors(start-1,i) == 1) && (map.getLevel(start-1) < map.getLevel(i))) {
-            Trace(dir,i+1,finish,c);
+            Trace(dir,finish,i+1,c);
           }
         }
         if(c.getFound()) {
