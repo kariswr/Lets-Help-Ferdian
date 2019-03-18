@@ -28,42 +28,17 @@ namespace TUBES_2
             return newArray;
         }
 
-        public void inputFromFile(string file1, string file2){
+        public void inputFromFileQuestion(string file2){
             //Pass the file path and file name to the StreamReader constructor
             try{
-                StreamReader sr = new StreamReader(file1);
                 StreamReader sr2 = new StreamReader(file2);
 
                 //Read the first line of text
-                string line = sr.ReadLine();
-                inc = Convert.ToInt32(line);
                 string line2 = sr2.ReadLine();
                 inc2 = Convert.ToInt32(line2);
 
-                string[] parts, parts2;
-                mjembatan = ResizeArray<int>(mjembatan, inc+2, inc+2);
+                string[] parts2;
                 question = ResizeArray<string>(question, inc2+1, 4);
-                Console.WriteLine(mjembatan.GetLength(0));
-                Console.WriteLine(mjembatan.GetLength(1));
-
-                for(int i=0; i<inc; i++){ //initializing mjembatan with 0
-                    for(int j=0; j<inc; j++){
-                        mjembatan[i,j] = 0;
-                    }
-                }
-
-            
-                //line = sr.ReadLine(); //reading the second line
-                
-                //Continue to read until you reach end of file
-                while((line = sr.ReadLine()) != null) {
-                    parts = line.Split(' ');
-                    int a = Convert.ToInt32(parts[0]);
-                    int b = Convert.ToInt32(parts[1]);
-
-                    mjembatan[a,b] = 1;
-                }
-                Console.WriteLine(inc2);
 
                 line2 = sr2.ReadLine();
                 for(int i=0; i<inc2; i++){
@@ -77,8 +52,40 @@ namespace TUBES_2
 
 
                 //close the file
-                sr.Close();
                 sr2.Close();
+            }
+            catch(Exception e){
+                Console.WriteLine("Exception: " + e.Message);
+            }
+        }
+
+        public void inputFromFileJembatan(string file1){
+            try {
+                StreamReader sr = new StreamReader(file1);
+
+                string line = sr.ReadLine();
+                inc = Convert.ToInt32(line);
+
+                string[] parts;
+                mjembatan = ResizeArray<int>(mjembatan, inc+2, inc+2);
+
+                for(int i=0; i<inc; i++){ //initializing mjembatan with 0
+                    for(int j=0; j<inc; j++){
+                        mjembatan[i,j] = 0;
+                    }
+                }
+
+                //Continue to read until you reach end of file
+                while((line = sr.ReadLine()) != null) {
+                    parts = line.Split(' ');
+                    int a = Convert.ToInt32(parts[0]);
+                    int b = Convert.ToInt32(parts[1]);
+
+                    mjembatan[a,b] = 1;
+                }
+                
+                //close the file
+                sr.Close();
             }
             catch(Exception e){
                 Console.WriteLine("Exception: " + e.Message);
@@ -118,7 +125,8 @@ namespace TUBES_2
             string file2 = Console.ReadLine();
 
             Masukan inputt = new Masukan();
-            inputt.inputFromFile(file1,file2);
+            inputt.inputFromFileJembatan(file1);
+            inputt.inputFromFileQuestion(file2);
             inputt.PrintQuestion();
             inputt.Printjembatan();
 
