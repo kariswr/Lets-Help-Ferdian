@@ -1,20 +1,39 @@
 ﻿using System.IO;
 using System;
 
-namespace TUBES_2
+namespace Kingdom
 {
-    public class Masukan
+    class Masukan
     {
         int[,] mjembatan;
-        string[,] question;
+        int [,] question;
 
         int inc, inc2;
 
         public Masukan(){
-            mjembatan = new int[1,1];
-            question = new string[1,1];
+            mjembatan = new int[0,0];
+            question = new int[0,0];
             inc = 0;
             inc2 = 0;
+        }
+
+        public int getJembatan(int i, int j){
+            return mjembatan[i,j];
+        }
+
+        public int getinc(){
+            return inc;
+        }
+
+        public int getinc2(){
+            return inc2;
+        }
+
+        public int getquestion(int i, int j){
+            return question[i,j];
+        }
+        public void setQuestion(int i, int j, int x){
+            question[i,j] = x;
         }
 
         private T[,] ResizeArray<T>(T[,] original, int rows, int cols)
@@ -38,14 +57,14 @@ namespace TUBES_2
                 inc2 = Convert.ToInt32(line2);
 
                 string[] parts2;
-                question = ResizeArray<string>(question, inc2+1, 4);
+                question = ResizeArray<int>(question, inc2+1, 4);
 
                 line2 = sr2.ReadLine();
                 for(int i=0; i<inc2; i++){
                     parts2 = line2.Split(' ');
-                    question[i,0] = parts2[0];
-                    question[i,1] = parts2[1];
-                    question[i,2] = parts2[2];
+                    question[i,0] = Convert.ToInt32(parts2[0]);
+                    question[i,1] = Convert.ToInt32(parts2[1]);
+                    question[i,2] = Convert.ToInt32(parts2[2]);
 
                     line2 = sr2.ReadLine();
                 }
@@ -82,6 +101,7 @@ namespace TUBES_2
                     int b = Convert.ToInt32(parts[1]);
 
                     mjembatan[a,b] = 1;
+                    mjembatan[b,a] = 1;
                 }
                 
                 //close the file
@@ -90,46 +110,6 @@ namespace TUBES_2
             catch(Exception e){
                 Console.WriteLine("Exception: " + e.Message);
             }
-        }
-
-        public void Printjembatan(){
-            for(int i=1; i<=inc; i++){
-                for(int j=1; j<=inc; j++){
-                    if(mjembatan[i,j] == 1){
-                        Console.Write("jembatan");
-                        Console.Write(i);
-                        Console.Write("-");
-                        Console.WriteLine(j);
-                    }
-                }
-            }
-        }
-
-        public void PrintQuestion(){
-            for(int i=0; i<inc2; i++){
-                Console.Write(question[i,0]);
-                Console.Write(" ");
-                Console.Write(question[i,1]);
-                Console.Write(" ");
-                Console.WriteLine(question[i,2]);
-            }
-        }
-
-    }
-
-    public class Test{
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Enter file name with extention (bridge than question):");
-            string file1 = Console.ReadLine();
-            string file2 = Console.ReadLine();
-
-            Masukan inputt = new Masukan();
-            inputt.inputFromFileJembatan(file1);
-            inputt.inputFromFileQuestion(file2);
-            inputt.PrintQuestion();
-            inputt.Printjembatan();
-
         }
     }
 }
