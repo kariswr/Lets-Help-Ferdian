@@ -64,7 +64,12 @@ namespace Kingdom
                     for(int j = 0; j < 3; j++) {
                         Console.Write(inputt.getquestion(i,j) + " ");
                     }
-                    Console.WriteLine(inputt.getquestion(i,3));
+                    Console.Write(" : ");
+                    if(inputt.getquestion(i,3) == 1){
+                        Console.WriteLine("TRUE");
+                    } else {
+                        Console.WriteLine("FALSE");
+                    }
                 }
                 
             } else if(choice == "2"){
@@ -101,7 +106,7 @@ namespace Kingdom
                     Console.WriteLine(H.map.getNeighbors(i,inputt.getinc()-1));
                 }
 
-                Console.Write("Input how many question you want to ask");
+                Console.Write("Input how many question you want to ask : ");
                 int p = Convert.ToInt32(Console.ReadLine());
                 int[,] ques = new int [p,4];
                 Console.WriteLine("Input your question : ");
@@ -128,7 +133,12 @@ namespace Kingdom
                     for(int j = 0; j < 3; j++) {
                         Console.Write(ques[i,j] + " ");
                     }
-                    Console.WriteLine(ques[i,3]);
+                    Console.Write(" : ");
+                    if(ques[i,3] == 1){
+                        Console.WriteLine("TRUE");
+                    } else {
+                        Console.WriteLine("FALSE");
+                    }
                 }
 
             } else{
