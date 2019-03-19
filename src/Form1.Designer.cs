@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.InputNonEx = new System.Windows.Forms.RichTextBox();
             this.AnswerPanel = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.Map = new System.Windows.Forms.Button();
             this.Question = new System.Windows.Forms.Button();
             this.Ways = new System.Windows.Forms.RichTextBox();
@@ -56,7 +57,7 @@
             this.GraphButt = new System.Windows.Forms.Button();
             this.InputGraph = new System.Windows.Forms.TextBox();
             this.InputEx = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.InputQuestType.SuspendLayout();
             this.AnswerPanel.SuspendLayout();
             this.InputQuestPanel.SuspendLayout();
@@ -141,6 +142,18 @@
             this.AnswerPanel.Name = "AnswerPanel";
             this.AnswerPanel.Size = new System.Drawing.Size(907, 603);
             this.AnswerPanel.TabIndex = 6;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Harlow Solid Italic", 50F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label8.Location = new System.Drawing.Point(148, 78);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(609, 126);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Hide N Seek";
             // 
             // Map
             // 
@@ -316,6 +329,7 @@
             // 
             this.FirstPanel.BackgroundImage = global::Kingdom.Properties.Resources.abstract_art_black_background_1040499;
             this.FirstPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FirstPanel.Controls.Add(this.label7);
             this.FirstPanel.Controls.Add(this.label3);
             this.FirstPanel.Controls.Add(this.button1);
             this.FirstPanel.Controls.Add(this.GraphButt);
@@ -379,28 +393,27 @@
             this.InputEx.TabIndex = 1;
             this.InputEx.Text = "Input the name of graph external file :";
             // 
-            // label8
+            // label7
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Harlow Solid Italic", 50F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.label8.Location = new System.Drawing.Point(148, 78);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(609, 126);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Hide N Seek";
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Harlow Solid Italic", 50F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label7.Location = new System.Drawing.Point(149, 240);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(0, 126);
+            this.label7.TabIndex = 7;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 607);
-            this.Controls.Add(this.AnswerPanel);
             this.Controls.Add(this.FirstPanel);
             this.Controls.Add(this.ExternalQuestPanel);
             this.Controls.Add(this.InputQuestPanel);
             this.Controls.Add(this.InputQuestType);
+            this.Controls.Add(this.AnswerPanel);
             this.Name = "Form1";
             this.Text = "HideAndSeek";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -448,6 +461,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }
 

@@ -27,8 +27,8 @@ namespace Kingdom
         }
 
         static Graph Graph = new Graph("graph");
-        static Masukan X = new Masukan();
         Form GraphForm = new Form2();
+        static Masukan X = new Masukan();
         static Microsoft.Glee.GraphViewerGdi.GViewer Viewer = new Microsoft.Glee.GraphViewerGdi.GViewer();
   
         private void GraphButt_Click(object sender, EventArgs e)
@@ -47,6 +47,7 @@ namespace Kingdom
                     E.Attr.ArrowHeadAtTarget = ArrowStyle.None;
                 }
 
+                
                 Viewer.Graph = Graph;
                 Viewer.Dock = DockStyle.Fill;
                 GraphForm.Controls.Add(Viewer);
@@ -99,9 +100,7 @@ namespace Kingdom
                 {
                     if (X.getJembatan(i, j) == 1)
                     {
-                        //nputNonEx.Text += i + " " + j + "";
                         H.map.makeNeighbors(i - 1, j - 1);
-                        //InputNonEx.Text += H.map.neighbor[0,0];
                     }
                 }
             }
@@ -123,16 +122,11 @@ namespace Kingdom
             else
             {
                 matrixReady();
-                Console.WriteLine(InputQuestEx.Text);
                 string[] S = InputQuestEx.Text.Split('\\');
-                Console.WriteLine(S[0]);
-                Console.WriteLine(S[S.Length - 1]);
                 X.inputFromFileQuestion(S[S.Length-1]);
-                Console.WriteLine(X.getinc2());
                 Solution[] Solutions = new Solution[X.getinc2()];
                 for (int i = 0; i < X.getinc2(); i++)
                 {
-                    Console.WriteLine("Test Dong !" + i + " \n");
                     Check c = new Check();
                     Solution s = new Solution();
                     H.Trace(X.getquestion(i, 0), X.getquestion(i, 1), X.getquestion(i, 2), c, s);
@@ -191,12 +185,10 @@ namespace Kingdom
                 {
                     if (s[i] != "")
                     {
-                        Console.WriteLine("Isinya itu : " + s[i]);
                         String[] y = s[i].Split(' ');
                         for (int j = 0; j < y.Length; j++)
                         {
                             ques[i, j] = Convert.ToInt32(y[j]);
-                            Console.WriteLine(i + " , " + j + ques[i, j]);
                         }
                     }                   
                 }
@@ -278,6 +270,8 @@ namespace Kingdom
             InputNonEx.Text = "";
             InputQuestEx.Text = "";
             Ways.Text = "";
+            Graph X = new Graph("graph");
+            Graph = X;
             FirstPanel.BringToFront();
         }
 
